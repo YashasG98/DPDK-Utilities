@@ -1,0 +1,67 @@
+spawn $env(RTE_SDK)/usertools/dpdk-setup.sh
+
+# uncomment this section if you want to build dpdk from scratch
+
+#expect "Option: "
+
+#send -- "15\r"    
+# change this number with relevance to your processor, OS and compiler
+
+#send -- "\n"
+
+# Initializing IGB UIO module
+
+expect "Option: "
+
+send -- "18\r"
+
+send -- "\n"
+
+# Binding ethernet device to IGB UIO module 
+
+expect "Option: "
+
+send -- "24\r"
+
+expect "Enter PCI address of device to bind to IGB UIO driver: "
+
+send -- "00:08.0\r"
+# change the address to match your network device PCI address
+
+send -- "\n"
+
+expect "Option: "
+
+send -- "24\r"
+
+expect "Enter PCI address of device to bind to IGB UIO driver: "
+
+send -- "00:09.0\r"
+# change the address to match your network device PCI address
+
+send -- "\n"
+
+# setting total of 4GB hugepages each of size 2MB
+
+expect "Option: "
+
+send -- "21\r"
+
+expect "Number of pages: "
+
+send -- "2048\r"
+# change this to set number of 2MB hugepages
+
+send -- "\n"
+
+expect "Option: "
+
+send -- "29\r"
+
+send -- "\n"
+
+expect "Option: "
+
+send -- "35\r"
+
+expect eof

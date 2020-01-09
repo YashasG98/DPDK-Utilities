@@ -1,0 +1,35 @@
+spawn $env(RTE_SDK)/usertools/dpdk-setup.sh
+
+# uncomment this section if you want to build dpdk from scratch
+
+#expect "Option: "
+
+#send -- "15\r"    
+# change this number with relevance to your processor, OS and compiler
+
+#send -- "\n"
+
+# setting total of 4GB hugepages each of size 2MB
+
+expect "Option: "
+
+send -- "21\r"
+
+expect "Number of pages: "
+
+send -- "1536\r"
+# change this to set number of 2MB hugepages
+
+send -- "\n"
+
+expect "Option: "
+
+send -- "29\r"
+
+send -- "\n"
+
+expect "Option: "
+
+send -- "35\r"
+
+expect eof
